@@ -30,6 +30,11 @@ public class GridViewAdapter extends BaseAdapter {
         this.itemList = itemList;
     }
 
+    public void updateData(List<TableModel> newData){
+        itemList.clear(); // Clear the existing data
+        itemList.addAll(newData); // Add new data to the data source
+        notifyDataSetChanged(); // Notify adapter that data has changed
+    }
     @Override
     public int getCount() {
         return itemList != null ? itemList.size() : 0;
@@ -96,5 +101,6 @@ public class GridViewAdapter extends BaseAdapter {
     private static class ViewHolder {
         TextView itemNameTextView;
     }
+
 }
 

@@ -50,8 +50,10 @@ public class FragmentCustomDialog extends DialogFragment {
                 // Do something with the inputText
                 saveIp(inputText);
 
-
-                dismiss(); // Close the dialog
+                dismiss();
+                if (dialogDismissListener != null) {
+                    dialogDismissListener.onDialogDismissed();
+                }
             }
         });
 

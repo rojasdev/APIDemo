@@ -43,11 +43,10 @@ public class DashboardFragment extends DialogFragment implements DialogListener{
 
         gridView = view.findViewById(R.id.gridView);
         adapter = new GridViewAdapter(requireActivity());
-        //adapter = new GridViewAdapter(requireContext());
         gridView.setAdapter(adapter);
 
-        fabMenu = view.findViewById(R.id.fab_menu);
 
+        fabMenu = view.findViewById(R.id.fab_menu);
         fabMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,14 +84,15 @@ public class DashboardFragment extends DialogFragment implements DialogListener{
 
     @Override
     public void onDialogDismissed() {
+        Log.d("Refreshing..", "Dismissed");
         refreshFragment();
     }
 
     private void refreshFragment() {
         // Implement your refresh logic here, such as reloading data in the fragment
-        //Log.e("REFRESH","Reffff");
-
         connectToService();
-
+        // Notify adapter that data has changed
+        adapter.notifyDataSetChanged();
+        Log.d("Refreshing..", "Dismissed Fragment");
     }
 }
